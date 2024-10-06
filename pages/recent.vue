@@ -22,13 +22,13 @@ definePageMeta({
 });
 
 const viewedPostsCookie = useCookie("viewedPosts");
-const viewedPostsIds = viewedPostsCookie.value?.map((id) => Number(id)) || [];
+const viewedPostsIds: number[] = viewedPostsCookie.value
+  ? viewedPostsCookie.value.map((id: string) => Number(id))
+  : [];
 
-const {
-  status,
-  data: posts,
-  error,
-} = await useAsyncData("posts", () =>
+console.log(viewedPostsCookie.value);
+
+const { status, data: posts } = await useAsyncData("posts", () =>
   $fetch<Post[]>("http://backend.app.loc/recentPosts", {
     method: "POST",
     body: {
@@ -36,12 +36,6 @@ const {
     },
   })
 );
-
-if (error.value) {
-  console.error("Error fetching posts:", error.value);
-} else {
-  console.log("Fetched posts:", posts.value);
-}
 </script>
 
 <style lang="scss" scoped></style>
