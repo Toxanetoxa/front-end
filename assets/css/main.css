@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .header__item {
+    @apply px-2 uppercase hover:text-amber-300 transition ease-in-out delay-150 font-bold cursor-pointerCustom;
+  }
+
+  .card {
+    @apply select-none p-5 border-violet-800 flex flex-col gap-5 border-2 transition ease-in-out delay-150 duration-300;
+  }
+
+  .card-hover {
+    @apply cursor-pointerCustom hover:bg-violet-900 hover:text-amber-300 hover:border-amber-300;
+  }
+
+  .page-title {
+    @apply select-none uppercase text-amber-300 font-bold text-4xl;
+  }
+}
+
+#__nuxt {
+  @apply flex flex-col h-full min-h-svh;
+}
+
+body {
+  font-family: "Chakra Petch", sans-serif;
+  @apply bg-slate-900 text-amber-100 box-border cursor-custom;
+}
+
+@layer utilities {
+  .cursor-custom {
+    cursor: url("../img/cursor/cursor.svg"), default;
+  }
+
+  .cursor-pointerCustom {
+    cursor: url("../img/cursor/cursor-pointer.svg"), pointer;
+  }
+}
+
+::-webkit-scrollbar {
+  @apply w-4 cursor-custom;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-amber-300 cursor-pointerCustom;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-amber-300;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #701a75;
+  @apply bg-violet-800 border-2;
+}
+
+/* Todo cursor-custon не работает у скроллбара */
