@@ -12,8 +12,8 @@
   </div>
 </template>
 
-<script setup>
-// import type { Post } from "~/types/post";
+<script setup lang="ts">
+import type { Post } from "~/types/post";
 import PostCard from "~/components/widgets/PostCard/PostCard.vue";
 import PreLoader from "~/components/widgets/PreLoader/PreLoader.vue";
 
@@ -29,7 +29,7 @@ const {
   data: posts,
   error,
 } = await useAsyncData("posts", () =>
-  $fetch("http://backend.app.loc/recentPosts", {
+  $fetch<Post[]>("http://backend.app.loc/recentPosts", {
     method: "POST",
     body: {
       ids: viewedPostsIds,
